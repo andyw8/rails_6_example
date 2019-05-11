@@ -25,3 +25,16 @@
 # For further information see the following documentation:
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
 # Rails.application.config.content_security_policy_report_only = true
+
+# https://github.com/rails/webpacker#vue
+Rails.application.config.content_security_policy do |policy|
+  if Rails.env.development?
+    policy.script_src :self, :https, :unsafe_eval
+  else
+    # The Webpacker README recommends this, but it causes issues:
+    #
+    # policy.script_src :self, :https
+    #
+    # See https://github.com/rails/webpacker/issues/1520#issuecomment-436548736
+  end
+end
