@@ -17,4 +17,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.filter_rails_from_backtrace!
+  config.include FactoryBot::Syntax::Methods
 end
+
+RSpec::Expectations.configuration.on_potential_false_positives = :raise
