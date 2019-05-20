@@ -7,12 +7,20 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6.0-node-browsers
+        environment:
+          PGHOST: localhost
+          PGUSER: rails_6_example
+          RAILS_ENV: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:10.6
+        environment:
+          POSTGRES_USER: rails_6_example
+          POSTGRES_DB: rails_6_example_test
+          POSTGRES_PASSWORD: ""
 
     working_directory: ~/repo
 
