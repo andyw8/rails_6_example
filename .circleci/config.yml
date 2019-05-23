@@ -48,6 +48,9 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
+      # Compile assets
+      - run: bundle exec rake assets:precompile
+
       # run tests!
       - run:
           name: run tests
