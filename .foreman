@@ -1,0 +1,2 @@
+# This is used only in development
+procfile: Procfile.dev

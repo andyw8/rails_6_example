@@ -1,0 +1,4 @@
+# NOTE: Consider if Procfile also needs updated when changing this
+
+web: bin/rails server -p $PORT
+webpack: bin/webpack-dev-server
