@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def index
     render json: TodoSerializer.new(Todo.by_position).serialized_json
   end
