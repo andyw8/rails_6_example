@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    render json: TodoSerializer.new(Todo.order(:id)).serialized_json
+    render json: TodoSerializer.new(Todo.by_position).serialized_json
   end
 
   def show

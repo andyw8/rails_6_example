@@ -20,7 +20,7 @@ RSpec.describe "Todo management", type: :request do
     expect(parsed_response_data).to eq(
       attributes: {
         completed: false,
-        order: 1,
+        position: 1,
         title: "my title"
       },
       id: todo.id.to_s,

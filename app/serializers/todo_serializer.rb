@@ -1,4 +1,4 @@
 class TodoSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :title, :order, :completed
+  attributes :title, :position, :completed
 end

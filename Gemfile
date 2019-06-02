@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'acts_as_list'
 gem 'fast_jsonapi'
 
 group :development, :test do
