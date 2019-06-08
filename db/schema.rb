@@ -15,17 +15,17 @@ ActiveRecord::Schema.define(version: 2019_06_02_010644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
+  create_table "items", force: :cascade do |t|
+    t.string "title", null: false
+    t.boolean "completed", default: false, null: false
+    t.integer "position", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "todos", force: :cascade do |t|
-    t.string "title", null: false
-    t.boolean "completed", default: false, null: false
-    t.integer "position", null: false
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
