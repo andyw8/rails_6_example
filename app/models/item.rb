@@ -1,4 +1,4 @@
-class Todo < ApplicationRecord
+class Item < ApplicationRecord
   acts_as_list
   validates :title, presence: true, strict: true
 

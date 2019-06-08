@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :todo do
+  factory :item do
     title { "default title" }
   end
 end
