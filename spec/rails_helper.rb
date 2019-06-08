@@ -18,6 +18,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
+
+  config.before(type: :system) do
+    driven_by :selenium, using: :headless_chrome
+  end
 end
 
 RSpec::Expectations.configuration.on_potential_false_positives = :raise

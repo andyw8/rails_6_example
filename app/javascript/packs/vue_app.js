@@ -2,13 +2,14 @@
 
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
+import TodoList from '../todo-list.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const vm = new Vue({
-    el: '#hello',
-    data: {
-      message: "Can you say hello?"
-    },
-    components: { App }
+    el: '#root',
+    components: {
+      'app': App,
+      'todo-list': TodoList,
+    }
   })
 })
