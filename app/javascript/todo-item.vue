@@ -38,13 +38,13 @@ export default {
     toggle: function (event) {
       const url = this.todoPath(this.item);
       const completed = this.item.attributes.completed == true ? 1 : 0;
-      const data = { todo: { completed: completed }};
+      const data = { item: { completed: completed }};
       axios
         .patch(url, data)
         .catch(error => alert(error))
     },
     todoPath: function(item) {
-      return `/todos/${item.id}`;
+      return `/items/${item.id}`;
     }
   }
 }

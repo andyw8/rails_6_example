@@ -45,7 +45,7 @@ export default {
   },
   mounted () {
     axios
-      .get('/todos.json')
+      .get('/items.json')
       .then(response => (this.items = response.data.data))
   }
 }

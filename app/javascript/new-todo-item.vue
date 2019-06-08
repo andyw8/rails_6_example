@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     addItem: function (event) {
-      const data = { todo: { title: this.title }};
-      const url = "/todos";
+      const data = { item: { title: this.title }};
+      const url = "/items";
       var vm = this;
       axios
         .post(url, data)

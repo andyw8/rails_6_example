@@ -3,8 +3,8 @@ require "pages/todo_list"
 
 RSpec.describe "Manage todos", type: :system do
   it "lists todos" do
-    create(:todo, title: "Buy apples")
-    create(:todo, title: "Buy bananas")
+    create(:item, title: "Buy apples")
+    create(:item, title: "Buy bananas")
 
     @page = Pages::TodoList.new.tap(&:load)
     visit root_path
@@ -27,8 +27,8 @@ RSpec.describe "Manage todos", type: :system do
   end
 
   it "allows deleting" do
-    apples = create(:todo, title: "Buy apples")
-    _bananas = create(:todo, title: "Buy bananas")
+    apples = create(:item, title: "Buy apples")
+    _bananas = create(:item, title: "Buy bananas")
     visit root_path
 
     @page = Pages::TodoList.new
