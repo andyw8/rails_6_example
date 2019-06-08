@@ -44,7 +44,7 @@ export default {
         .catch(error => alert(error))
     },
     todoPath: function(item) {
-      return `/items/${item.id}`;
+      return `/api/v1/items/${item.id}.json`;
     }
   }
 }
