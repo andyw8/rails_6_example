@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Item management", type: :request do
+  before { create(:list) }
+
   it "indexes" do
     create(:item)
 

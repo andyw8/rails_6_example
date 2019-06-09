@@ -2,6 +2,8 @@ require "rails_helper"
 require "pages/todo_list"
 
 RSpec.describe "Manage todos", type: :system do
+  before { create(:list) }
+
   it "lists todos" do
     create(:item, title: "Buy apples")
     create(:item, title: "Buy bananas")

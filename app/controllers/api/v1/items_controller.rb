@@ -14,6 +14,7 @@ module API::V1
 
     def create
       item = Item.new(item_params)
+      item.list = List.last!
 
       if item.save
         serialized_item = ItemSerializer.new(item).serialized_json
