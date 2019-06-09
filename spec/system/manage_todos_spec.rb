@@ -9,7 +9,6 @@ RSpec.describe "Manage todos", type: :system do
     create(:item, title: "Buy bananas")
 
     @page = Pages::TodoList.new.tap(&:load)
-    visit root_path
 
     expect(@page.item_titles).to eq(["Buy apples", "Buy bananas"])
   end
@@ -21,9 +20,6 @@ RSpec.describe "Manage todos", type: :system do
     @page.load
     @page.new_todo_item.title.set("Buy apples")
     @page.new_todo_item.add.click
-
-    fill_in "Title", with: "Buy apples"
-    click_button "Add Item"
 
     expect(@page.item_titles).to eq(["Buy apples"])
   end
