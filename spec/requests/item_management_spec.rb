@@ -1,12 +1,12 @@
 require "rails_helper"
 
 RSpec.describe "Item management", type: :request do
-  before { create(:list) }
+  let!(:list) { create(:list) }
 
   it "indexes" do
-    create(:item)
+    create(:item, list: list)
 
-    get "/api/v1/lists/1/items", headers: headers
+    get "/api/v1/lists/#{list.id}/items", headers: headers
 
     expect(response).to have_http_status(:ok)
     expect(parsed_response_data.first).to include(
@@ -15,9 +15,9 @@ RSpec.describe "Item management", type: :request do
   end
 
   it "shows" do
-    item = create(:item, title: "my title")
+    item = create(:item, title: "my title", list: list)
 
-    get "/api/v1/lists/1/items/#{item.id}", headers: headers
+    get "/api/v1/lists/#{list.id}/items/#{item.id}", headers: headers
 
     expect(parsed_response_data).to eq(
       attributes: {
@@ -31,27 +31,27 @@ RSpec.describe "Item management", type: :request do
   end
 
   it "creates" do
-    post "/api/v1/lists/1/items", params: valid_params, headers: headers
+    post "/api/v1/lists/#{list.id}/items", params: valid_params, headers: headers
 
     expect(response).to have_http_status(:created)
   end
 
   it "updates" do
-    item = create(:item, title: "old")
+    item = create(:item, title: "old", list: list)
     params = valid_params
 
     params[:item][:title] = "new"
-    patch "/api/v1/lists/1/items/#{item.id}", params: params, headers: headers
+    patch "/api/v1/lists/#{list.id}/items/#{item.id}", params: params, headers: headers
 
     expect(response).to have_http_status(:ok)
     expect(item.reload.title).to eq("new")
   end
 
   it "destroys" do
-    item = create(:item, title: "old")
+    item = create(:item, title: "old", list: list)
 
     expect do
-      delete "/api/v1/lists/1/items/#{item.id}", headers: headers
+      delete "/api/v1/lists/#{list.id}/items/#{item.id}", headers: headers
     end.to change { Item.count }.by(-1)
     expect(response).to have_http_status(:no_content)
   end

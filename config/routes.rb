@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root "pages#welcome"
+  root "lists#index"
 
   resources :pages, only: :show
+
+  resources :lists, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

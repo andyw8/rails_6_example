@@ -11,6 +11,9 @@
 const axios = require('axios');
 
 export default {
+  props: {
+    list: String
+  },
   data: function() {
     return {
       title: ""
@@ -19,7 +22,7 @@ export default {
   methods: {
     addItem: function (event) {
       const data = { item: { title: this.title }};
-      const url = "/api/v1/lists/1/items";
+      const url = `/api/v1/lists/${this.list}/items`;
       var vm = this;
       axios
         .post(url, data)

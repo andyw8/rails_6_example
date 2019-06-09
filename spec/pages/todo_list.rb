@@ -6,7 +6,7 @@ require "pages/support/wait_for_xhr"
 module Pages
   class TodoList < SitePrism::Page
     include WaitForXhr
-    set_url '/'
+    set_url "/lists/{list_id}"
     sections :items, Sections::Item, "li.todo-item"
     section :new_todo_item, Sections::NewTodoItem, '#new-todo-item'
 
