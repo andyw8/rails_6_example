@@ -21,6 +21,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'acts_as_list'
 gem 'fast_jsonapi'
+gem 'hamlit'
 
 group :development, :test do
   gem 'byebug'
