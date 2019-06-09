@@ -18,7 +18,7 @@ module API::V1
 
       if item.save
         serialized_item = ItemSerializer.new(item).serialized_json
-        render json: serialized_item, status: :created, location: api_v1_item_path(item)
+        render json: serialized_item, status: :created, location: api_v1_list_item_path(item.list, item)
       else
         render json: item.errors, status: :unprocessable_entity
       end

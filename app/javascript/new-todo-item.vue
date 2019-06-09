@@ -19,7 +19,7 @@ export default {
   methods: {
     addItem: function (event) {
       const data = { item: { title: this.title }};
-      const url = "/api/v1/items";
+      const url = "/api/v1/lists/1/items";
       var vm = this;
       axios
         .post(url, data)

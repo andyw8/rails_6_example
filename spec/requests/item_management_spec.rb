@@ -6,7 +6,7 @@ RSpec.describe "Item management", type: :request do
   it "indexes" do
     create(:item)
 
-    get "/api/v1/items", headers: headers
+    get "/api/v1/lists/1/items", headers: headers
 
     expect(response).to have_http_status(:ok)
     expect(parsed_response_data.first).to include(
@@ -17,7 +17,7 @@ RSpec.describe "Item management", type: :request do
   it "shows" do
     item = create(:item, title: "my title")
 
-    get "/api/v1/items/#{item.id}", headers: headers
+    get "/api/v1/lists/1/items/#{item.id}", headers: headers
 
     expect(parsed_response_data).to eq(
       attributes: {
@@ -31,7 +31,7 @@ RSpec.describe "Item management", type: :request do
   end
 
   it "creates" do
-    post "/api/v1/items", params: valid_params, headers: headers
+    post "/api/v1/lists/1/items", params: valid_params, headers: headers
 
     expect(response).to have_http_status(:created)
   end
@@ -41,7 +41,7 @@ RSpec.describe "Item management", type: :request do
     params = valid_params
 
     params[:item][:title] = "new"
-    patch "/api/v1/items/#{item.id}", params: params, headers: headers
+    patch "/api/v1/lists/1/items/#{item.id}", params: params, headers: headers
 
     expect(response).to have_http_status(:ok)
     expect(item.reload.title).to eq("new")
@@ -51,7 +51,7 @@ RSpec.describe "Item management", type: :request do
     item = create(:item, title: "old")
 
     expect do
-      delete "/api/v1/items/#{item.id}", headers: headers
+      delete "/api/v1/lists/1/items/#{item.id}", headers: headers
     end.to change { Item.count }.by(-1)
     expect(response).to have_http_status(:no_content)
   end
