@@ -1,0 +1,7 @@
+%h1 New List
+
+= form_for list, url: { action: :create } do |f|
+  %label
+    Title
+    = f.text_field "title"
+  = f.submit

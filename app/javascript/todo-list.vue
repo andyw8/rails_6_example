@@ -3,9 +3,9 @@
     <div>
       Items: {{ itemCount() }}
       <ul>
-        <todo-item v-for="item in items" v-bind:item="item" v-on:todo-deleted="remove"/>
+        <todo-item v-for="item in items" v-bind:item="item" v-on:todo-deleted="remove" :list="list"/>
       </ul>
-      <new-todo-item v-on:todo-added="add"></new-todo-item>
+      <new-todo-item v-on:todo-added="add" :list="list"></new-todo-item>
     </div>
   </div>
 </template>
@@ -17,6 +17,9 @@ import NewTodoItem from 'new-todo-item.vue';
 const axios = require('axios');
 
 export default {
+  props: {
+    "list": String
+  },
   components: {
     'todo-item': TodoItem,
     'new-todo-item': NewTodoItem,
@@ -45,7 +48,7 @@ export default {
   },
   mounted () {
     axios
-      .get('/api/v1/lists/1/items.json')
+      .get(`/api/v1/lists/${this.list}/items.json`)
       .then(response => (this.items = response.data.data))
   }
 }

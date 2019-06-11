@@ -21,7 +21,8 @@ axios.interceptors.response.use(response => {
 
 export default {
   props: {
-    item: Object
+    item: Object,
+    list: String
   },
   methods: {
     deleteItem: function (event) {
@@ -44,7 +45,7 @@ export default {
         .catch(error => alert(error))
     },
     todoPath: function(item) {
-      return `/api/v1/lists/1/items/${item.id}.json`;
+      return `/api/v1/lists/${this.list}/items/${item.id}.json`;
     }
   }
 }
